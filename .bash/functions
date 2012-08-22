@@ -1,0 +1,117 @@
+#!/bin/bash
+
+# For password stuff
+GPGKEYID="5EE1613E"
+
+proxy()
+{
+  echo "Old: `myip`"
+  export http_proxy="<PROXY HERE>"
+  export https_proxy="<PROXY HERE>"
+  echo "New: `myip`"
+}
+
+unproxy()
+{
+  echo "Old: `myip`"
+  unset http_proxy
+  unset https_proxy
+  echo "New: `myip`"
+}
+
+switchOpenShift()
+{
+  pushd $HOME/.openshift
+  ln -sf $1 express.conf
+  popd
+}
+
+brcrl()
+{
+  source ~/.bashrc
+}
+
+screencap()
+{
+  if [ ! -d $HOME/Pictures/screenshots ]
+  then
+    mkdir -p $HOME/Pictures/screenshots
+  fi
+
+  api="01051f3abacf8fb87e328692306b806b"
+  date=$(date +%F-%R)
+  filename="$HOME/Pictures/screenshots/$date.png"
+  clear
+  screenfetch -D 'redhat'
+  scrot -c -d 5 "$filename"
+
+  imgurres=$(curl -F "key=$api" -H "Expect: " -F "image=@$filename" \
+    http://imgur.com/api/upload.xml 2>/dev/null)
+
+  url=$(echo $imgurres | \
+    sed -r 's/.*<original_image>(.*)<\/original_image>.*/\1/')
+  deleteurl=$(echo $imgurres | \
+    sed -r 's/.*<delete_page>(.*)<\/delete_page>.*/\1/')
+
+  echo "Image Uploaded:"
+  echo "URL: $url"
+  echo "Delete URL: $deleteurl"
+}
+
+
+addpass()
+{
+
+  if [ ! -d $HOME/.pass ]
+  then
+    mkdir $HOME/.pass
+  fi
+
+  read -p "Name the password: " name
+  read -sp "Enter password: " pass
+  echo $pass | gpg -e -a -r $GPGKEYID --no-tty > $HOME/.pass/$name 2>/dev/null
+  
+}
+
+loadpass()
+{
+  if [ -z $@ ]
+  then
+    read -p "Which pass would you like to load?" toloadpass
+  else
+    toloadpass=$@
+  fi
+  
+  export $toloadpass=$(gpg -d $HOME/.pass/$toloadpass)
+}
+
+loadallpass()
+{
+  for i in $HOME/.pass/*
+  do
+    toload=$(echo $i | sed 's/.*\///')
+    export $toload="$(gpg -d $HOME/.pass/$toload 2>/dev/null)"
+  done
+}
+
+unsetpass()
+{
+  if [ $@ == "" ]
+  then
+    read -p "Which pass would you like to unload?" unloadpass
+  else
+    unloadpass=$@
+  fi
+
+  unset $unloadpass
+}
+
+unsetallpass()
+{
+  for i in $HOME/.pass/*
+  do
+    tounload=$(echo $i | sed 's/.*\///')
+    unset $tounload
+  done
+}
+

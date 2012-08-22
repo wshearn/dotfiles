@@ -1,0 +1,19 @@
+#!/bin/bash
+
+alias myip="curl ifconfig.me 2> /dev/null"
+alias less="less -r"
+alias ls="ls --color=auto -F"
+alias ll="ls -l"
+alias la="ls -A"
+alias pushd="pushd >/dev/null"
+alias popd="popd >/dev/null"
+alias pssh="pssh -t 0"
+
+# Mock
+alias f16mock64="mock -r fedora-16-x86_64"
+alias f16mock32="mock -r fedora-16-i386"
+alias f17mock64="mock -r fedora-17-x86_64"
+alias f17mock32="mock -r fedora-17-i386"
+alias rhel6mock64="mock -r epel-6-x86_64"
+alias rhel6mock32="mock -r epel-6-i386"
+

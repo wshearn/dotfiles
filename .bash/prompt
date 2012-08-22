@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Prompt
+## Colors
+if [ $UID = "0" ]
+then
+  ucolor="\[\e[0;31m\]"
+  eol="#"
+else
+  ucolor="\[\e[0;34m\]"
+  eol="$"
+fi
+rcolor="\[\e[0m\]"
+
+## [TIME] [GITINFO]
+## [RETCODE]user@host:dir $eol
+if [ -f /etc/bash_completion.d/git ];
+then
+  GIT_PS1_SHOWDIRTYSTATE=true
+  GIT_PS1_SHOWUNTRACKEDFILES=true
+  GIT_PS1_SHOWSTASHSTATE=true
+  PROMPT_COMMAND='PS1="[\@] $(__git_ps1 [%s])\n[\$?]$ucolor\u$rcolor@\h:\w $eol "'
+else
+  PROMPT_COMMAND='PS1="[\@]\n[\$?]\u@\h:\w $eol "'
+fi
