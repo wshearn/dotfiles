@@ -205,12 +205,12 @@ windows = {
     name = "(status)";
     level = "ALL";
   };
-  2 = {
+  99 = {
     immortal = "yes";
     name = "hilight";
     sticky = "yes";
   };
-  3 = {
+  2 = {
     items = (
       {
         type = "CHANNEL";
@@ -220,7 +220,7 @@ windows = {
       }
     );
   };
-  4 = {
+  3 = {
     items = (
       {
         type = "CHANNEL";
@@ -230,7 +230,7 @@ windows = {
       }
     );
   };
-  5 = {
+  4 = {
     items = (
       {
         type = "CHANNEL";
@@ -243,5 +243,5 @@ windows = {
 };
 mainwindows = {
   1 = { first_line = "7"; lines = "23"; };
-  2 = { first_line = "1"; lines = "6"; };
+  99 = { first_line = "1"; lines = "6"; };
 };
