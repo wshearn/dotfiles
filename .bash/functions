@@ -5,18 +5,22 @@ GPGKEYID="5EE1613E"
 
 proxy()
 {
-  echo "Old: `myip`"
+  echo "Old:"
+  myip
   export http_proxy="<PROXY HERE>"
   export https_proxy="<PROXY HERE>"
-  echo "New: `myip`"
+  echo "New:"
+  myip
 }
 
 unproxy()
 {
-  echo "Old: `myip`"
+  echo "Old:"
+  myip
   unset http_proxy
   unset https_proxy
-  echo "New: `myip`"
+  echo "New:"
+  myip
 }
 
 switchOpenShift()
@@ -42,7 +46,7 @@ screencap()
   date=$(date +%F-%R)
   filename="$HOME/Pictures/screenshots/$date.png"
   clear
-  screenfetch -D 'redhat'
+  screenfetch
   scrot -c -d 5 "$filename"
 
   imgurres=$(curl -F "key=$api" -H "Expect: " -F "image=@$filename" \
@@ -113,5 +117,20 @@ unsetallpass()
     tounload=$(echo $i | sed 's/.*\///')
     unset $tounload
   done
+}
+
+gitpullall()
+{
+  gpa_startbranch=$(git describe --contains --all HEAD)
+  gpa_origins=($(git branch -l | sed 's/*//'))
+  git fetch --all
+
+  for i in ${gpa_origins[@]}
+  do
+    git checkout $i
+    git pull --ff-only
+  done
+
+  git checkout $gpa_startbranch
 }
 

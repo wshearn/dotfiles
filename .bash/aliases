@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias myip="curl ifconfig.me 2> /dev/null"
+alias myip="curl ifconfig.me"
 alias less="less -r"
 alias ls="ls --color=auto -F"
 alias ll="ls -l"
