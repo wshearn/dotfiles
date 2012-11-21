@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/whearn/wsgi-3.2/template'
+let g:netrw_dirhist_2='/home/whearn/.ddd'
+let g:netrw_dirhist_3='/home/whearn/.mutt'
+let g:netrw_dirhist_4='/media/realcrypt1/work/puppet/modules/setup/manifests/ops_team'
+let g:netrw_dirhist_5='/media/realcrypt1/work/Dev/Express/etherpad-lite/bin'
+let g:netrw_dirhist_6='/media/realcrypt1/work/Prod/Express/raw/raw'
+let g:netrw_dirhist_7='/home/whearn/.i3'
