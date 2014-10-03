@@ -12,10 +12,13 @@ else
 fi
 rcolor="\[\e[0m\]"
 
+git_prompt="/usr/share/git-core/contrib/completion/git-prompt.sh"
+
 ## [TIME] [GITINFO]
 ## [RETCODE]user@host:dir $eol
-if [ -f /etc/bash_completion.d/git ];
+if [ -f ${git_prompt} ];
 then
+  source ${git_prompt}
   GIT_PS1_SHOWDIRTYSTATE=true
   GIT_PS1_SHOWUNTRACKEDFILES=true
   GIT_PS1_SHOWSTASHSTATE=true

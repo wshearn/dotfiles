@@ -35,3 +35,9 @@ then
   . $HOME/.bash/prompt
 fi
 
+if [ -r $HOME/.nvm/nvm.sh ]
+then
+  . $HOME/.nvm/nvm.sh
+  . $NVM_DIR/bash_completion
+  nvm use 0.10 2>&1 >>/dev/null
+fi

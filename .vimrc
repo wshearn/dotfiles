@@ -8,41 +8,44 @@ set nocompatible               " be iMproved
 
 " Vundle {{{
   filetype off
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
+  set rtp+=~/.vim/bundle/Vundle.vim/
+  call vundle#begin()
 
   " let Vundle manage Vundle
-  Bundle 'gmarik/vundle'
+  Plugin 'gmarik/Vundle.vim'
 
   " Vundles
   "
   " github repos
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'tpope/vim-rails'
-  Bundle 'tpope/vim-haml'
-  Bundle 'tpope/vim-endwise'
-  Bundle 'tpope/vim-surround'
-  Bundle 'tpope/vim-ragtag'
-  Bundle 'tpope/vim-markdown'
-  Bundle 'tpope/vim-unimpaired'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'msanders/snipmate.vim'
-  Bundle 'ervandew/supertab'
-  Bundle 'tomtom/tlib_vim'
-  Bundle 'tomtom/tcomment_vim'
-  Bundle 'tomtom/tselectbuffer_vim'
-  Bundle 'tsaleh/vim-matchit'
-  Bundle 'vim-scripts/taglist.vim'
-  Bundle 'Townk/vim-autoclose'
-  Bundle 'trapd00r/x11colors.vim'
-  Bundle 'lilydjwg/colorizer'
-  " Bundle 'fholgado/minibufexpl.vim'
-  Bundle 'shemerey/vim-project'
-  " Bundle 'Twinside/vim-codeoverview'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-rails'
+  Plugin 'tpope/vim-haml'
+  Plugin 'tpope/vim-endwise'
+  Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-ragtag'
+  Plugin 'tpope/vim-markdown'
+  Plugin 'tpope/vim-unimpaired'
+  Plugin 'scrooloose/nerdtree'
+  " Plugin 'msanders/snipmate.vim'
+  Plugin 'ervandew/supertab'
+  Plugin 'tomtom/tlib_vim'
+  Plugin 'tomtom/tcomment_vim'
+  Plugin 'tomtom/tselectbuffer_vim'
+  " Plugin 'tsaleh/vim-matchit'
+  Plugin 'vim-scripts/taglist.vim'
+  Plugin 'Townk/vim-autoclose'
+  Plugin 'trapd00r/x11colors.vim'
+  Plugin 'lilydjwg/colorizer'
+  " Plugin 'fholgado/minibufexpl.vim'
+  Plugin 'shemerey/vim-project'
+  " Plugin 'Twinside/vim-codeoverview'
+  Plugin 'nanotech/jellybeans.vim'
 
   " vim-scripts repos
 
   " non github repos
+
+  call vundle#end()
 
 " }}}
 " General settings {{{
@@ -141,7 +144,7 @@ set nocompatible               " be iMproved
     colorscheme wombat256mod 
 
   else
-    colorscheme wombat256mod 
+    colorscheme jellybeans
   endif
 " }}}
 " Status line {{{
