@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # For password stuff
-GPGKEYID="5EE1613E"
+GPGKEYID="20722794"
 
 proxy()
 {
@@ -134,3 +134,31 @@ gitpullall()
   git checkout $gpa_startbranch
 }
 
+androidtextinput()
+{
+  devices=($(adb devices | awk '/device$/{ print $1 }'))
+  device=""
+  if [[ ${#devices[@]} -gt 1 ]]; then
+    let counter=0
+    for dev in ${devices[@]}; do
+      echo "$counter ) $dev"
+      let counter=$counter+1
+    done
+    read -p "Select device to send text to: " dev
+
+    if [[ -z ${devices[$dev]} ]]; then
+      echo "Error selecting device"
+      return
+    else
+      device=${devices[$dev]}
+    fi
+  else
+    device=${devices}
+  fi
+
+  echo "Sending text to: ${device}"
+
+  read -p "Enter text to send to the android device: " text
+  safeText=$(echo $text | sed 's/ /%s/g')
+  adb -s $device shell input text "$safeText"
+}

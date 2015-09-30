@@ -10,10 +10,13 @@ alias popd="popd >/dev/null"
 alias pssh="pssh -t 0"
 
 # Mock
-alias f16mock64="mock -r fedora-16-x86_64"
-alias f16mock32="mock -r fedora-16-i386"
-alias f17mock64="mock -r fedora-17-x86_64"
-alias f17mock32="mock -r fedora-17-i386"
+alias f21mock64="mock -r fedora-21-x86_64"
+alias f21mock32="mock -r fedora-21-i386"
+alias f22mock64="mock -r fedora-22-x86_64"
+alias f22mock32="mock -r fedora-22-i386"
+alias f23mock64="mock -r fedora-23-x86_64"
+alias f23mock32="mock -r fedora-23-i386"
 alias rhel6mock64="mock -r epel-6-x86_64"
 alias rhel6mock32="mock -r epel-6-i386"
+alias rhel7mock64="mock -r epel-7-x86_64"
 
