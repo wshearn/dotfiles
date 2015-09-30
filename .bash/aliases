@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias myip="curl ifconfig.me"
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias less="less -r"
 alias ls="ls --color=auto -F"
 alias ll="ls -l"
