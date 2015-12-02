@@ -9,6 +9,9 @@ alias pushd="pushd >/dev/null"
 alias popd="popd >/dev/null"
 alias pssh="pssh -t 0"
 
+# Because of https://chrome.google.com/webstore/detail/cloud-to-butt-plus/apmlngnhgbnjpajelfkmabhkfapgnoai?hl=en
+alias gbutt="gcloud"
+
 # Mock
 alias f21mock64="mock -r fedora-21-x86_64"
 alias f21mock32="mock -r fedora-21-i386"
