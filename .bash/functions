@@ -54,14 +54,11 @@ screencap()
 
   imageid=$(echo $imgurres | \
     sed -r 's/.*id":"([^"]+).*/\1/' )
-  url=$(echo $imgurres | \
-    sed -r 's/.*link":"(.*)"}.*/\1/' | \
-    sed 's/\\//g' )
   deletehash=$(echo $imgurres | \
     sed -r 's/.*deletehash":"([^"]+).*/\1/')
 
   echo "Image Uploaded: $imageid"
-  echo "URL: $url"
+  echo "URL: https://i.imgur.com/$imageid.png"
   echo "Delete URL: https://imgur.com/delete/$deletehash"
 }
 
