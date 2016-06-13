@@ -42,26 +42,28 @@ screencap()
     mkdir -p $HOME/Pictures/screenshots
   fi
 
-  api="01051f3abacf8fb87e328692306b806b"
+  api="cb9d0e71cde7c1d"
   date=$(date +%F-%R)
   filename="$HOME/Pictures/screenshots/$date.png"
   clear
   screenfetch
   scrot -c -d 5 "$filename"
 
-  imgurres=$(curl -F "key=$api" -H "Expect: " -F "image=@$filename" \
-    http://imgur.com/api/upload.xml 2>/dev/null)
+  imgurres=$(curl -H "Authorization: Client-ID $api" -H "Expect: " -F "image=@$filename" \
+    https://api.imgur.com/3/image 2> /dev/null)
 
+  imageid=$(echo $imgurres | \
+    sed -r 's/.*id":"([^"]+).*/\1/' )
   url=$(echo $imgurres | \
-    sed -r 's/.*<original_image>(.*)<\/original_image>.*/\1/')
-  deleteurl=$(echo $imgurres | \
-    sed -r 's/.*<delete_page>(.*)<\/delete_page>.*/\1/')
+    sed -r 's/.*link":"(.*)"}.*/\1/' | \
+    sed 's/\\//g' )
+  deletehash=$(echo $imgurres | \
+    sed -r 's/.*deletehash":"([^"]+).*/\1/')
 
-  echo "Image Uploaded:"
+  echo "Image Uploaded: $imageid"
   echo "URL: $url"
-  echo "Delete URL: $deleteurl"
+  echo "Delete URL: https://imgur.com/delete/$deletehash"
 }
-
 
 addpass()
 {
