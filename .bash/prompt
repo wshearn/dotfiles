@@ -22,7 +22,9 @@ then
   GIT_PS1_SHOWDIRTYSTATE=true
   GIT_PS1_SHOWUNTRACKEDFILES=true
   GIT_PS1_SHOWSTASHSTATE=true
-  PROMPT_COMMAND='PS1="[\@] $(__git_ps1 [%s])\n[\$?]$ucolor\u$rcolor@\h:\w $eol "'
+#  PROMPT_COMMAND='xtermcontrol --title="Terminal"; PS1="$(__git_ps1 [%s])[\$?]$ucolor\h$rcolor:\w $eol "'
+  PROMPT_COMMAND='PS1="$(__git_ps1 [%s])[\$?]$ucolor\h$rcolor:\w $eol "'
 else
-  PROMPT_COMMAND='PS1="[\@]\n[\$?]$ucolor\u$rcolor@\h:\w $eol "'
+#  PROMPT_COMMAND='xtermcontrol --title="Terminal"; PS1="[\$?]$ucolor\h$rcolor:\w $eol "'
+  PROMPT_COMMAND='PS1="[\$?]$ucolor\h$rcolor:\w $eol "'
 fi
