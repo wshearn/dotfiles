@@ -3,7 +3,7 @@
 export MAILDIR="$HOME/Mail"
 export EDITOR=vim
 export GREP_COLOR='01;32'
-export BROWSER=google-chrome
+export BROWSER=vivaldi
 export LC_ALL=en_US.utf8
 export LANG=en_US.utf8
 export TERM=xterm-256color
