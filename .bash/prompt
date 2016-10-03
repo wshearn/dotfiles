@@ -14,8 +14,7 @@ rcolor="\[\e[0m\]"
 
 git_prompt="/usr/share/git-core/contrib/completion/git-prompt.sh"
 
-## [TIME] [GITINFO]
-## [RETCODE]user@host:dir $eol
+## [GITINFO][RETCODE]user@host:dir $eol
 if [ -f ${git_prompt} ];
 then
   source ${git_prompt}
