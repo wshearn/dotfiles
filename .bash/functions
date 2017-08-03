@@ -162,3 +162,16 @@ androidtextinput()
   safeText=$(echo $text | sed 's/ /%s/g')
   adb -s $device shell input text "$safeText"
 }
+
+change_wallpaper()
+{
+    pushd $HOME/Pictures > /dev/null
+
+    WALLPAPERS=(Wallpapers/*)
+    RNG_PAPER=$(( $RANDOM % ${#WALLPAPERS[@]} ))
+    ln -sf ${WALLPAPERS[$RNG_PAPER]} wallpaper
+
+    popd > /dev/null
+
+    feh --bg-fill --no-xinerama $HOME/Pictures/wallpaper
+}
